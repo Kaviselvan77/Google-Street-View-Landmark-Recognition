@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recognition Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <nav class="nav"><span class="brand">LANDMARK<span>AI</span></span><a class="back" href="/">← New prediction</a></nav>
+    <section class="result-layout">
+      <div>
+        <p class="eyebrow">ANALYSIS COMPLETE</p>
+        <h1>Recognition<br><span>result.</span></h1>
+        <p class="subtitle">The model's top predictions for your uploaded image.</p>
+        <img class="preview" src="{{ image_url }}" alt="Uploaded landmark">
+      </div>
+      <div class="result-card">
+        <p class="eyebrow">TOP PREDICTION</p>
+        <h2>{{ predictions[0].name }}</h2>
+        <div class="confidence">{{ "%.2f"|format(predictions[0].confidence) }}<small>% confidence</small></div>
+        <div class="divider"></div>
+        <h3>Other possible matches</h3>
+        {% for item in predictions[1:] %}
+        <div class="match"><span>{{ item.name }}</span><strong>{{ "%.2f"|format(item.confidence) }}%</strong></div>
+        {% endfor %}
+        <p class="note">Confidence is the model's predicted probability, not a guarantee that the identification is correct.</p>
+        <a class="button-link" href="/">Try another image →</a>
+      </div>
+    </section>
+    <footer>Landmark Recognition System · CNN & TensorFlow</footer>
+  </main>
+</body>
+</html>

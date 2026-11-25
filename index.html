@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landmark Recognition AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <nav class="nav"><span class="brand">LANDMARK<span>AI</span></span><span class="tag">CNN IMAGE RECOGNITION</span></nav>
+    <section class="hero">
+      <p class="eyebrow">GOOGLE STREET VIEW · DEEP LEARNING</p>
+      <h1>Discover the landmark<br><span>behind the image.</span></h1>
+      <p class="subtitle">Upload a landmark photo and let the trained CNN model predict what it is.</p>
+      <form class="upload-card" method="POST" enctype="multipart/form-data">
+        <div class="upload-icon">↑</div>
+        <label for="image">Choose a landmark image</label>
+        <p>PNG, JPG or JPEG · Maximum 8 MB</p>
+        <input id="image" type="file" name="image" accept=".png,.jpg,.jpeg" required>
+        <button type="submit">Recognize Landmark <span>→</span></button>
+      </form>
+      {% if error %}<div class="error">{{ error }}</div>{% endif %}
+    </section>
+    <footer>Landmark Recognition System · CNN & TensorFlow</footer>
+  </main>
+</body>
+</html>
